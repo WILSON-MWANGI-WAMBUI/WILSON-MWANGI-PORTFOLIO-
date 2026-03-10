@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Send, Phone, MapPin, Mail } from "lucide-react";
+import { useState } from "react";
+import { Send, MapPin, Mail } from "lucide-react";
 // Contact Jsx 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ export default function Contact() {
 
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
+  const [statusType, setStatusType] = useState(null);
 
   const validateForm = () => {
     let tempErrors = {};
@@ -47,30 +48,31 @@ export default function Contact() {
     e.preventDefault();
 
     if (!validateForm()) {
+      setStatusType("error");
       setStatus("Please fill in all required fields correctly.");
       return;
     }
 
     try {
-      setStatus("Sending message...");
+      setStatusType(null);
+      setStatus("Sending message to server...");
 
-      // Use Web3Forms API for reliable email delivery
-      const form = new FormData();
-      form.append("access_key", "a6addcea-2a74-4f9e-81bc-f9dcd4195e2f");
-      form.append("name", formData.name);
-      form.append("email", formData.email);
-      form.append("subject", formData.subject || "New Contact Form Submission");
-      form.append("message", formData.message);
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: form,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
 
       if (response.ok && result.success) {
-        setStatus("Message sent successfully!");
+        setStatusType("success");
+        setStatus(result.message || "Message sent successfully!");
         setFormData({
           name: "",
           email: "",
@@ -79,9 +81,13 @@ export default function Contact() {
         });
         setErrors({});
       } else {
-        setStatus(result.message || "There was an error sending your message.");
+        setStatusType("error");
+        setStatus(
+          result.message || "There was an error sending your message."
+        );
       }
     } catch (error) {
+      setStatusType("error");
       setStatus("An error occurred. Please try again.");
       console.error("Error:", error);
     }
@@ -216,10 +222,9 @@ export default function Contact() {
               {/* Status Message */}
               {status && (
                 <div
-                  className={`mt-4 text-center ${status.includes("success")
-                    ? "text-green-400"
-                    : "text-red-400"
-                    }`}
+                  className={`mt-4 text-center ${
+                    statusType === "success" ? "text-green-400" : "text-red-400"
+                  }`}
                 >
                   <p>{status}</p>
                 </div>

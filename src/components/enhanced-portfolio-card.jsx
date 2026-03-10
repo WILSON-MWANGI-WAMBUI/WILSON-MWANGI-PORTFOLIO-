@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { motion, useAnimation } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -12,29 +12,52 @@ import {
 } from "@/components/ui/tooltip"
 // Enhanced Porfolio card
 const Particles = () => {
+  const [particles, setParticles] = useState([])
+
+  useEffect(() => {
+    const w =
+      typeof window !== "undefined" && window.innerWidth ? window.innerWidth : 1200
+    const h =
+      typeof window !== "undefined" && window.innerHeight ? window.innerHeight : 800
+
+    const data = Array.from({ length: 50 }, () => {
+      const opacity = Math.random()
+      const x = Math.random() * w
+      const y = Math.random() * h
+      const scale = Math.random() * 0.5 + 0.5
+      const y2 = Math.random() * h
+      const duration = Math.random() * 10 + 10
+      const size = Math.random() * 3 + 1
+
+      return { opacity, x, y, scale, y2, duration, size }
+    })
+
+    setParticles(data)
+  }, [])
+
   return (
     (<div className="absolute inset-0 overflow-hidden">
-      {[...Array(50)].map((_, i) => (
+      {particles.map((p, i) => (
         <motion.div
           key={i}
           className="absolute bg-white rounded-full"
           initial={{
-            opacity: Math.random(),
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            scale: Math.random() * 0.5 + 0.5,
+            opacity: p.opacity,
+            x: p.x,
+            y: p.y,
+            scale: p.scale,
           }}
           animate={{
-            y: [null, Math.random() * window.innerHeight],
+            y: [null, p.y2],
             transition: {
-              duration: Math.random() * 10 + 10,
+              duration: p.duration,
               repeat: Infinity,
               repeatType: "reverse",
             },
           }}
           style={{
-            width: `${Math.random() * 3 + 1}px`,
-            height: `${Math.random() * 3 + 1}px`,
+            width: `${p.size}px`,
+            height: `${p.size}px`,
           }} />
       ))}
     </div>)

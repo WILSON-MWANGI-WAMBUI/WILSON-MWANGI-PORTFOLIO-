@@ -1,0 +1,25 @@
+/**
+ * Contact controller.
+ *
+ * Responsibilities:
+ * - Handle HTTP request/response.
+ * - Delegate business logic to services.
+ */
+
+import { sendContactEmail } from "../services/mailService.js";
+
+export async function contactController(req, res, next) {
+  try {
+    const { name, email, message } = req.body;
+
+    await sendContactEmail({ name, email, message });
+
+    return res.status(200).json({
+      success: true,
+      message: "Message sent successfully",
+    });
+  } catch (err) {
+    return next(err);
+  }
+}
+
