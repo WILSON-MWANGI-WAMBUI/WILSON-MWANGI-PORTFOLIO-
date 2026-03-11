@@ -21,18 +21,29 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export async function sendContactEmail({ name, email, message }) {
-  // For Gmail deliverability, the "from" must typically match the authenticated account.
-  // Use replyTo so that replying goes to the visitor.
-  const subject = `New portfolio contact from ${name}`;
+export async function sendContactEmail({ name, email, subject, message }) {
+  // Dev bypass: skip sending when using placeholder SMTP (avoids 500 on local test)
+  const isPlaceholder =
+    env.SMTP_USER === "yourgmail@gmail.com" ||
+    !env.SMTP_PASS ||
+    env.SMTP_PASS === "your_gmail_app_password";
+  if (process.env.NODE_ENV !== "production" && isPlaceholder) {
+    console.log("[DEV] Skipping email send - using placeholder SMTP. Add real Gmail credentials to backend/.env for real delivery.");
+    return;
+  }
 
-  const textBody = `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`;
+  // Use visitor's subject if provided, otherwise default
+  const emailSubject = (subject && String(subject).trim())
+    ? `[Portfolio] ${String(subject).trim()}`
+    : `New portfolio contact from ${name}`;
+
+  const textBody = `Name: ${name}\nEmail: ${email}\nSubject: ${emailSubject}\n\nMessage:\n${message}`;
 
   await transporter.sendMail({
     from: env.SMTP_USER,
     to: env.RECEIVER_EMAIL,
     replyTo: `"${name}" <${email}>`,
-    subject,
+    subject: emailSubject,
     text: textBody,
   });
 }

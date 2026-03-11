@@ -38,6 +38,9 @@ export default function Contact() {
     if (!formData.message.trim()) {
       tempErrors.message = "Message is required";
       isValid = false;
+    } else if (formData.message.trim().length < 10) {
+      tempErrors.message = "Message must be at least 10 characters";
+      isValid = false;
     }
 
     setErrors(tempErrors);
@@ -54,11 +57,18 @@ export default function Contact() {
     }
 
     try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      if (!apiUrl) {
+        setStatusType("error");
+        setStatus("API URL is not configured. Please contact the site owner.");
+        return;
+      }
+
       setStatusType(null);
       setStatus("Sending message to server...");
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/contact`,
+        `${apiUrl}/api/contact`,
         {
           method: "POST",
           headers: {
@@ -68,7 +78,17 @@ export default function Contact() {
         }
       );
 
-      const result = await response.json();
+      const text = await response.text();
+      let result = { success: false, message: "Unknown error" };
+      if (text && text.trim() !== "") {
+        try {
+          result = JSON.parse(text);
+        } catch {
+          setStatusType("error");
+          setStatus("Server returned an invalid response. Please try again later.");
+          return;
+        }
+      }
 
       if (response.ok && result.success) {
         setStatusType("success");
@@ -95,8 +115,7 @@ export default function Contact() {
 
   return (
     <main
-      className="pt-20 lg:pt-[0rem] bg-[#04081A]
- text-white min-h-screen"
+      className="pt-20 lg:pt-[0rem] bg-[#04081A] text-white min-h-screen"
     >
       <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
@@ -223,7 +242,11 @@ export default function Contact() {
               {status && (
                 <div
                   className={`mt-4 text-center ${
-                    statusType === "success" ? "text-green-400" : "text-red-400"
+                    statusType === "success"
+                      ? "text-green-400"
+                      : statusType === "error"
+                        ? "text-red-400"
+                        : "text-blue-400"
                   }`}
                 >
                   <p>{status}</p>

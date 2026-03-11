@@ -10,9 +10,9 @@ import { sendContactEmail } from "../services/mailService.js";
 
 export async function contactController(req, res, next) {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, subject, message } = req.body ?? {};
 
-    await sendContactEmail({ name, email, message });
+    await sendContactEmail({ name, email, subject, message });
 
     return res.status(200).json({
       success: true,

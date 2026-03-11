@@ -25,16 +25,36 @@ app.use(helmet());
 // JSON parsing for API requests
 app.use(express.json({ limit: "10kb" }));
 
-// CORS - restrict to your Vercel domain in production
+// CORS
+// - In production: restrict to the deployed Vercel origin.
+// - In development: also allow localhost for easier testing.
+const allowedOrigins = new Set([env.FRONTEND_ORIGIN]);
+
+if (process.env.NODE_ENV !== "production") {
+  allowedOrigins.add("http://localhost:5173");
+  allowedOrigins.add("http://localhost:5174");
+  allowedOrigins.add("http://localhost:5175");
+}
+
 app.use(
   cors({
-    origin: env.FRONTEND_ORIGIN,
+    origin(origin, callback) {
+      // Allow non-browser clients or same-origin requests with no Origin header
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.has(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
   })
 );
 
-// Health check endpoint for Render / monitoring
+// Health check endpoints for Render / monitoring
 app.get("/", (req, res) => {
   res.status(200).json({ status: "API running" });
+});
+app.get("/health", (req, res) => {
+  res.status(200).json({ ok: true });
 });
 
 // Mount API routes

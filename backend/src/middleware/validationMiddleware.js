@@ -10,7 +10,7 @@
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 
 export function validateContact(req, res, next) {
-  const { name, email, message } = req.body ?? {};
+  const { name, email, subject, message } = req.body ?? {};
 
   // Collect all validation errors to return a single response to the client.
   const errors = [];
@@ -23,6 +23,10 @@ export function validateContact(req, res, next) {
     errors.push("Email is required.");
   } else if (!EMAIL_REGEX.test(String(email).trim())) {
     errors.push("Email must be a valid email address.");
+  }
+
+  if (!subject || String(subject).trim().length === 0) {
+    errors.push("Subject is required.");
   }
 
   if (!message || String(message).trim().length === 0) {

@@ -2,30 +2,28 @@ import { ReactLenis } from "lenis/react";
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-// Projects 
+// Projects
 const projects = [
   {
     title: "Wilson Mwangi Wambui Portfolio",
     description:
-      "A sleek portfolio built with React and Tailwind CSS to showcase your skills, projects, and experience in a modern design.",
-      src: "rock.jpg",
-      link: "https://WILSON-MWANGI-WAMBUI-portfolio.vercel.app",
+      "Problem Solver 🚀 | Javascript Engineer 💻 | Crafting frameworks and coding the future. Personal portfolio built with React, Vite, and Tailwind CSS. Showcases skills (React, NextJS, TypeScript, Node, MongoDB) with a layered Express backend, contact form with email delivery, and smooth Lenis scrolling. Deployed on Vercel.",
+    image: "https://image.thum.io/get/width/800/crop/600/https://wilson-mwangi-portfolio-2y5b.vercel.app",
+    // Crop out browser tabs & chrome - show only the clean website content
+    imagePosition: "center 18%",
     color: "#5196fd",
-    githubLink: "https://github.com/WILSON-MWANGI-WAMBUI-portfolio",
-    liveLink: "https://WILSON-MWANGI-WAMBUI-portfolio.vercel.app",
+    githubLink: "https://github.com/WILSON-MWANGI-WAMBUI/wilson-mwangi-portfolio-2y5b",
+    liveLink: "https://wilson-mwangi-portfolio-2y5b.vercel.app",
   },
-
   {
-    title: "wifi billing system - frontend ",
+    title: "WiFi Billing System - Frontend",
     description:
-      "A frontend project for a wifi billing system built with React and Tailwind CSS and javascript.",
-    src: "tree.jpg",
-    link: "...processing",
+      "A frontend project for a WiFi billing system built with React, Tailwind CSS, and JavaScript.",
+    image: "https://placehold.co/800x600/1e293b/64748b?text=Coming+Soon",
     color: "#8f89ff",
     githubLink: "https://github.com/WILSON-MWANGI-WAMBUI/spider-wifi-billing-system-frontend",
-    liveLink: "...processing",
+    liveLink: "https://github.com/WILSON-MWANGI-WAMBUI/spider-wifi-billing-system-frontend",
   },
-
 ];
 
 export default function Projects() {
@@ -89,7 +87,8 @@ export default function Projects() {
               <Card
                 key={`p_${i}`}
                 i={i}
-                url={project.link}
+                image={project.image}
+                imagePosition={project.imagePosition}
                 title={project.title}
                 color={project.color}
                 description={project.description}
@@ -111,7 +110,8 @@ function Card({
   i,
   title,
   description,
-  url,
+  image,
+  imagePosition,
   color,
   progress,
   range,
@@ -145,9 +145,10 @@ function Card({
           {/* Image section - full width on mobile, 55% on desktop */}
           <div className="w-full md:w-[55%] h-[250px] md:h-[400px] lg:h-[450px] relative overflow-hidden">
             <motion.img
-              src={url}
+              src={image}
               alt={title}
               className="w-full h-full object-cover"
+              style={imagePosition ? { objectPosition: imagePosition } : undefined}
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.4 }}
@@ -266,7 +267,8 @@ Card.propTypes = {
   i: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  imagePosition: PropTypes.string,
   color: PropTypes.string.isRequired,
   progress: PropTypes.object.isRequired,
   range: PropTypes.array.isRequired,

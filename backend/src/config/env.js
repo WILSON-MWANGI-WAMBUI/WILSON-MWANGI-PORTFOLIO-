@@ -7,9 +7,14 @@
  * - Fails fast in production when critical config is missing.
  */
 import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 
-// Load environment variables from .env (local dev). In Render, env vars are injected by the platform.
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load backend/.env so it works whether started from project root (npm run dev) or backend dir
+dotenv.config({ path: join(__dirname, "../../.env") });
 
 /**
  * Helper to read environment variables with optional "required" behavior.
