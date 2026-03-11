@@ -8,8 +8,9 @@ const projects = [
     title: "Wilson Mwangi Wambui Portfolio",
     description:
       "Problem Solver 🚀 | Javascript Engineer 💻 | Crafting frameworks and coding the future. Personal portfolio built with React, Vite, and Tailwind CSS. Showcases skills (React, NextJS, TypeScript, Node, MongoDB) with a layered Express backend, contact form with email delivery, and smooth Lenis scrolling. Deployed on Vercel.",
-    image: "https://image.thum.io/get/width/800/crop/600/https://wilson-mwangi-portfolio-2y5b.vercel.app",
-    // Crop out browser tabs & chrome - show only the clean website content
+    image: "/portfolio-screenshot.png",
+    // Crop tabs/chrome from top - show only the website screen
+    imageFit: "cover",
     imagePosition: "center 18%",
     color: "#5196fd",
     githubLink: "https://github.com/WILSON-MWANGI-WAMBUI/wilson-mwangi-portfolio-2y5b",
@@ -88,6 +89,7 @@ export default function Projects() {
                 key={`p_${i}`}
                 i={i}
                 image={project.image}
+                imageFit={project.imageFit}
                 imagePosition={project.imagePosition}
                 title={project.title}
                 color={project.color}
@@ -111,6 +113,7 @@ function Card({
   title,
   description,
   image,
+  imageFit,
   imagePosition,
   color,
   progress,
@@ -147,8 +150,11 @@ function Card({
             <motion.img
               src={image}
               alt={title}
-              className="w-full h-full object-cover"
-              style={imagePosition ? { objectPosition: imagePosition } : undefined}
+              className="w-full h-full"
+              style={{
+                objectFit: imageFit || "cover",
+                ...(imagePosition && { objectPosition: imagePosition }),
+              }}
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.4 }}
@@ -268,6 +274,7 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  imageFit: PropTypes.string,
   imagePosition: PropTypes.string,
   color: PropTypes.string.isRequired,
   progress: PropTypes.object.isRequired,
