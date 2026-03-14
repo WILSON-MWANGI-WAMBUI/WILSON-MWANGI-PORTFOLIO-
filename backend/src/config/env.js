@@ -33,7 +33,12 @@ export const env = {
   PORT: Number(readEnv("PORT", { required: false, defaultValue: "5000" })),
 
   // Security / CORS
-  FRONTEND_ORIGIN: readEnv("FRONTEND_ORIGIN"),
+  // Supports comma-separated origins (e.g. production + preview URLs)
+  // Each is normalized (trailing slash stripped)
+  FRONTEND_ORIGIN: readEnv("FRONTEND_ORIGIN")
+    .split(",")
+    .map((o) => String(o).trim().replace(/\/+$/, ""))
+    .filter(Boolean),
 
   // SMTP (Gmail SMTP by default, but configurable)
   SMTP_HOST: readEnv("SMTP_HOST", { required: false, defaultValue: "smtp.gmail.com" }),

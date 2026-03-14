@@ -39,12 +39,20 @@ export async function sendContactEmail({ name, email, subject, message }) {
 
   const textBody = `Name: ${name}\nEmail: ${email}\nSubject: ${emailSubject}\n\nMessage:\n${message}`;
 
-  await transporter.sendMail({
-    from: env.SMTP_USER,
-    to: env.RECEIVER_EMAIL,
-    replyTo: `"${name}" <${email}>`,
-    subject: emailSubject,
-    text: textBody,
-  });
+  try {
+    await transporter.sendMail({
+      from: env.SMTP_USER,
+      to: env.RECEIVER_EMAIL,
+      replyTo: `"${name}" <${email}>`,
+      subject: emailSubject,
+      text: textBody,
+    });
+  } catch (err) {
+    // Log SMTP response for debugging (e.g. 535 auth failed)
+    const smtpCode = err?.responseCode ?? err?.code;
+    const smtpMsg = err?.response ?? err?.message;
+    console.error("[Mail] SMTP error:", smtpCode, smtpMsg);
+    throw err;
+  }
 }
 

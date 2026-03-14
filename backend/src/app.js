@@ -26,9 +26,10 @@ app.use(helmet());
 app.use(express.json({ limit: "10kb" }));
 
 // CORS
-// - In production: restrict to the deployed Vercel origin.
-// - In development: also allow localhost for easier testing.
-const allowedOrigins = new Set([env.FRONTEND_ORIGIN]);
+// - FRONTEND_ORIGIN supports comma-separated list (e.g. production + preview URLs)
+// - In dev: also allow localhost
+// - Vercel previews: allow any *.vercel.app subdomain matching the project
+const allowedOrigins = new Set(Array.isArray(env.FRONTEND_ORIGIN) ? env.FRONTEND_ORIGIN : [env.FRONTEND_ORIGIN]);
 
 if (process.env.NODE_ENV !== "production") {
   allowedOrigins.add("http://localhost:5173");
@@ -36,14 +37,15 @@ if (process.env.NODE_ENV !== "production") {
   allowedOrigins.add("http://localhost:5175");
 }
 
+// Allow Vercel preview deployments (e.g. wilson-mwangi-portfolio-git-xxx.vercel.app)
+const vercelPreviewRegex = /^https:\/\/wilson-mwangi-portfolio(-[a-z0-9-]+)?\.vercel\.app$/i;
+
 app.use(
   cors({
     origin(origin, callback) {
-      // Allow non-browser clients or same-origin requests with no Origin header
       if (!origin) return callback(null, true);
-      if (allowedOrigins.has(origin)) {
-        return callback(null, true);
-      }
+      if (allowedOrigins.has(origin)) return callback(null, true);
+      if (vercelPreviewRegex.test(origin)) return callback(null, true);
       return callback(new Error("Not allowed by CORS"));
     },
   })

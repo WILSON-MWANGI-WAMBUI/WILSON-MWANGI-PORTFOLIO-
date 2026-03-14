@@ -19,6 +19,7 @@ export async function contactController(req, res, next) {
       message: "Message sent successfully",
     });
   } catch (err) {
+    console.error("[Contact] Email send failed:", err.message, err.response ? err.response : "");
     return next(err);
   }
 }
