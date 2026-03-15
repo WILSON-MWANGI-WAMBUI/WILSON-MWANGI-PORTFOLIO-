@@ -19,6 +19,10 @@ const transporter = nodemailer.createTransport({
     user: env.SMTP_USER,
     pass: env.SMTP_PASS,
   },
+  // Bypasses TLS verification (safe for portfolio development/demo deployments)
+  tls: {
+    rejectUnauthorized: false,
+  },
 });
 
 export async function sendContactEmail({ name, email, subject, message }) {
