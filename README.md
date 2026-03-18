@@ -1,6 +1,6 @@
 # Wilson Mwangi Portfolio
 
-A personal portfolio site showcasing **Wilson Mwangi Wambui** — Problem Solver, Javascript Engineer, and Software Engineering professional. Built with React, Vite, and Tailwind CSS on the frontend, and Express + Nodemailer on the backend for contact form email delivery.
+A personal portfolio site showcasing **Wilson Mwangi Wambui** — Problem Solver, Javascript Engineer, and Software Engineering professional. Built with React, Vite, and Tailwind CSS on the frontend, and Express + SendGrid on the backend for contact form email delivery.
 
 ## Project Overview
 
@@ -18,9 +18,9 @@ This portfolio presents:
 | Layer     | Stack              | Hosting    |
 | --------- | ------------------ | ---------- |
 | Frontend  | React, Vite, Tailwind | Vercel   |
-| Backend   | Express, Nodemailer  | Render   |
+| Backend   | Express, SendGrid  | Render   |
 
-The frontend calls the backend API for the contact form. Emails are sent via Gmail SMTP using Nodemailer.
+The frontend calls the backend API for the contact form. Emails are sent via SendGrid's API.
 
 ## Environment Variables
 
@@ -39,17 +39,9 @@ Set these in your Render service **Environment** tab:
 | Variable           | Description                                        | Example                                            |
 | ------------------ | -------------------------------------------------- | -------------------------------------------------- |
 | `FRONTEND_ORIGIN`  | Allowed CORS origin (your Vercel URL)              | `https://wilson-mwangi-portfolio-2y5b.vercel.app`  |
-| `SMTP_USER`        | Gmail address used to send emails                  | `mwangiwilson137@gmail.com`                        |
-| `SMTP_PASS`        | Gmail App Password (not your regular Gmail password)| *(16-character App Password)*                     |
+| `SENDGRID_API_KEY` | SendGrid API key (keep secret)                     | *(set in Render; never commit)*                    |
+| `SENDER_EMAIL`     | Verified sender email in SendGrid                  | `mwangiwilson137@gmail.com`                        |
 | `RECEIVER_EMAIL`   | Where contact form messages are delivered          | `mwangiwilson137@gmail.com`                        |
-
-#### Gmail App Password
-
-1. Go to [Google Account → Security](https://myaccount.google.com/security)
-2. Enable **2-Step Verification** if needed
-3. Under **2-Step Verification**, go to **App passwords**
-4. Create an app password for **Mail** / **Other (Custom name)** → e.g. "Portfolio"
-5. Use the 16-character password as `SMTP_PASS`
 
 If these are set correctly on Render, every submitted contact message will be delivered to `RECEIVER_EMAIL`.
 

@@ -2,60 +2,57 @@
  * Mail service (business logic layer).
  *
  * Responsibilities:
- * - Configure Nodemailer transport using env vars.
+ * - Configure SendGrid using env vars.
  * - Compose and send the contact email.
  */
 
-import nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 import { env } from "../config/env.js";
+import { logger } from "../utils/logger.js";
 
-// Create the SMTP transporter once at startup.
-// This avoids re-creating the transport for every request.
-const transporter = nodemailer.createTransport({
-  host: env.SMTP_HOST,
-  port: env.SMTP_PORT,
-  secure: env.SMTP_PORT === 465, // true for 465, false for 587/other ports
-  auth: {
-    user: env.SMTP_USER,
-    pass: env.SMTP_PASS,
-  },
-  // Bypasses TLS verification (safe for portfolio development/demo deployments)
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+// Configure SendGrid once at startup.
+sgMail.setApiKey(env.SENDGRID_API_KEY);
 
 export async function sendContactEmail({ name, email, subject, message }) {
-  // Dev bypass: skip sending when using placeholder SMTP (avoids 500 on local test)
-  const isPlaceholder =
-    env.SMTP_USER === "yourgmail@gmail.com" ||
-    !env.SMTP_PASS ||
-    env.SMTP_PASS === "your_gmail_app_password";
-  if (process.env.NODE_ENV !== "production" && isPlaceholder) {
-    console.log("[DEV] Skipping email send - using placeholder SMTP. Add real Gmail credentials to backend/.env for real delivery.");
-    return;
-  }
+  const safeName = String(name ?? "").trim();
+  const safeEmail = String(email ?? "").trim();
+  const safeSubject = String(subject ?? "").trim();
+  const safeMessage = String(message ?? "");
 
-  // Use visitor's subject if provided, otherwise default
-  const emailSubject = (subject && String(subject).trim())
-    ? `[Portfolio] ${String(subject).trim()}`
-    : `New portfolio contact from ${name}`;
+  const emailSubject = safeSubject ? safeSubject : "Portfolio Contact";
 
-  const textBody = `Name: ${name}\nEmail: ${email}\nSubject: ${emailSubject}\n\nMessage:\n${message}`;
+  const textBody = `Name: ${safeName}\nEmail: ${safeEmail}\n\nMessage:\n${safeMessage}`;
 
   try {
-    await transporter.sendMail({
-      from: env.SMTP_USER,
+    const msg = {
       to: env.RECEIVER_EMAIL,
-      replyTo: `"${name}" <${email}>`,
+      from: env.SENDER_EMAIL,
       subject: emailSubject,
       text: textBody,
+      ...(safeEmail
+        ? {
+            replyTo: {
+              name: safeName || undefined,
+              email: safeEmail,
+            },
+          }
+        : {}),
+    };
+
+    await sgMail.send(msg);
+    logger.info("Contact email sent successfully", {
+      to: env.RECEIVER_EMAIL,
+      from: env.SENDER_EMAIL,
     });
   } catch (err) {
-    // Log SMTP response for debugging (e.g. 535 auth failed)
-    const smtpCode = err?.responseCode ?? err?.code;
-    const smtpMsg = err?.response ?? err?.message;
-    console.error("[Mail] SMTP error:", smtpCode, smtpMsg);
+    // SendGrid provides useful error response bodies
+    const statusCode = err?.code ?? err?.response?.statusCode;
+    const responseBody = err?.response?.body;
+    logger.error("SendGrid email send failed", {
+      statusCode,
+      responseBody,
+      message: err?.message,
+    });
     throw err;
   }
 }

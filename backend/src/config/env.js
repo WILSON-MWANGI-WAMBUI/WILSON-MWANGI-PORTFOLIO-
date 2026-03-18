@@ -40,11 +40,9 @@ export const env = {
     .map((o) => String(o).trim().replace(/\/+$/, ""))
     .filter(Boolean),
 
-  // SMTP (Gmail SMTP by default, but configurable)
-  SMTP_HOST: readEnv("SMTP_HOST", { required: false, defaultValue: "smtp.gmail.com" }),
-  SMTP_PORT: Number(readEnv("SMTP_PORT", { required: false, defaultValue: "587" })),
-  SMTP_USER: readEnv("SMTP_USER"),
-  SMTP_PASS: readEnv("SMTP_PASS"),
+  // SendGrid
+  SENDGRID_API_KEY: readEnv("SENDGRID_API_KEY"),
+  SENDER_EMAIL: readEnv("SENDER_EMAIL"),
 
   // Recipient
   RECEIVER_EMAIL: readEnv("RECEIVER_EMAIL"),
