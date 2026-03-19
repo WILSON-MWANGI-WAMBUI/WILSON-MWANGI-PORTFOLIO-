@@ -57,12 +57,10 @@ export default function Contact() {
     }
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      if (!apiUrl) {
-        setStatusType("error");
-        setStatus("API URL is not configured. Please contact the site owner.");
-        return;
-      }
+      // Prefer Vercel/Vite env var, but fall back to the known Render backend URL
+      // to avoid breaking production when Vercel env vars are missing.
+      const apiUrl =
+        import.meta.env.VITE_API_URL || "https://portfolio-backend-qmoo.onrender.com";
 
       setStatusType(null);
       setStatus("Sending message to server...");
