@@ -8,7 +8,7 @@ export default function About() {
       <section id="about" className="py-16 md:py-32  text-white bg-[#04081A]">
         <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
           <h2 className="relative z-10 max-w-xl text-4xl font-medium lg:text-5xl text-white">
-            WILSON MWANGI WAMBUI Software Engineering
+            WILSON MWANGI |Software Engineer | AI Engineer | Technical Support Engineer | 
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
             <div className="relative mb-6 sm:mb-0">
@@ -25,11 +25,11 @@ export default function About() {
 
             <div className="relative space-y-4">
               <p className="text-white">
-              Hello, I'm WILSON MWANGI WAMBUI, a dedicated Software Developer with a passion for crafting robust and innovative solutions. My journey in the world of technology has been an exciting exploration, and I'm thrilled to share a bit about myself with you.{" "}
+              Hello, I'm WILSON MWANGI WAMBUI, a dedicated Software Enginner with a passion for crafting robust and innovative solutions. My journey in the world of technology has been an exciting exploration, and I'm thrilled to share a bit about myself with you.{" "}
                 <span className="font-bold text-white">
-                Proficient in MERN Stack and Python: I specialize in MERN (MongoDB, Express.js, React, Node.js) stack development, harnessing the power of these technologies to build dynamic and scalable applications. Additionally, my proficiency extends to Python, where I've had the pleasure of working on diverse projects, including those leveraging the Django framework
+                Proficient in MERN Stack , Javascript and Python: Proefficient in MERN (MongoDB, Express.js, React, Node.js) stack development, harnessing the power of these technologies to build dynamic and scalable applications. Additionally, my proficiency extends to Python, where I've had the pleasure of working on diverse projects, including those leveraging the Django framework
                 </span>
-                , Passion for Problem-Solving: What fuels my enthusiasm for software development is the thrill of problem-Solving. I thrive on challenges, and the dynamic nature of the tech world keeps me constantly engaged. My goal is not just to write code but to architect solutions that stand the test of time.
+                , Passion for Problem-Solving: What fuels my enthusiasm for software Engineering is the thrill of problem-Solving. I thrive on challenges, and the dynamic nature of the tech world keeps me constantly engaged. My goal is not just to write code but to architect solutions that stand the test of time.
               </p>
               <p className="text-white">
               Let's Collaborate: Whether you have a project in mind, wish to discuss the latest trends in tech, or just want to connect with a fellow enthusiast, I'm always open to collaboration and conversation. Feel free to reach out to me via email or connect with me on LinkedIn.

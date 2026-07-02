@@ -55,27 +55,36 @@ const ExperienceSection = () => {
   const experiences = [
     {
       icon: Network,
-      title: "Junior Software Engineer",
-      company: "Fiverr",
-      period: "2021 - 2023",
+      title: " Full Stack Software Engineer | AI Engineer (Freelancer)",
+      company: "freelance",
+      period: "2025-present",
       description:
-        "Worked on developing and customizing WordPress and Laravel websites for clients globally.",
+        "Build scalable full-stack apps using Node.js, Python, React, PostgreSQL
+Projects: E-commerce web and mobile applications & system (orders, dashboard, inventory), real-time video app (WebRTC, Socket.io), booking system (JWT auth)
+Focus: clean architecture, performance, and reliable APIs
+Tech: Node.js, Express, React, MongoDB, PostgreSQL, REST APIs, Git, Docker ",
     },
     {
       icon: Layers,
-      title: "Junior Software Developer",
-      company: "Fiverr",
-      period: "2021 - 2023",
+      title: "IT & System Support Engineer (Part-Time)",
+      company: " ",
+      period: "2022 – 2024",
       description:
-        "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
+        "Provided system, network, and user support (Windows/Linux, LAN setup)
+Troubleshot hardware/software issues and managed configurations
+Solved: Reduced downtime by fixing network misconfigurations, improving system stability
+Tech: Linux, Windows, TCP/IP, DNS, Remote Tools, Diagnostics",
     },
     {
       icon: Code2,
-      title: "Junior JavaScript Developer",
-      company: "Fiver",
-      period: "2024 - Present",
+      title: "Web & Mobile Application Developer",
+      company: "Zalego Tech Co.",
+      period: "2020 – 2021",
       description:
-        "Contributed to developing JavaScript projects as a junior developer.",
+        "Developed responsive web/mobile apps using HTML, CSS, JavaScript, PHP, MySQL
+Built and integrated frontend + backend features
+Solved: Improved page load speed by optimizing assets and reducing requests
+Tech: HTML, CSS, JavaScript,Java,Python, PHP, MySQL, Git, Android Studio (basic).",
     },
   ];
 
@@ -114,7 +123,7 @@ const ExperienceSection = () => {
               <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full" />
             </div>
             <p className="text-lg md:text-xl text-gray-400 font-medium tracking-wide text-center max-w-2xl">
-              "Transforming ideas into digital reality, one project at a time"
+              "Engineering digital solutions From architecture to production | Building systems that work, scale, and deliver real value | Transforming complex problems into simple, powerful digital solutions"
             </p>
           </div>
 

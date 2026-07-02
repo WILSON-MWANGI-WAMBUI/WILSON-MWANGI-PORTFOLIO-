@@ -179,7 +179,7 @@ const profile = {
               <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-6 sm:mb-8 animate__animated animate__fadeInDown animate__delay-1s">
                 <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></div>
                 <span className="text-gray-300 text-xs sm:text-sm font-medium">
-                  Welcome to my World
+                  Welcome to my Space
                 </span>
               </div>
 
@@ -212,8 +212,8 @@ const profile = {
               {/* Description */}
               <div className="relative mb-8 sm:mb-12 max-w-xl">
                 <p className="text-base sm:text-xl text-gray-300/90 leading-relaxed">
-                  Problem Solver 🚀 | Javascript Engineer 🚁 | Crafting frameworks
-                  and coding the future ✈
+                   |Software Engineer | AI Engineer | Technical Support Engineer | Problem solver | Tech Enthusiast
+                  and 
                 </p>
               </div>
 
@@ -252,18 +252,17 @@ const profile = {
               {/* Floating badges */}
               <div className="hidden lg:block absolute left-[5.5rem] top-[2.3rem] animate-float-slow">
                 <div className="px-4 py-2 rounded-lg bg-purple-500/10 backdrop-blur-sm border border-purple-500/20 text-purple-400">
-                  <i className="fas fa-wand-magic-sparkles"></i>&nbsp;&nbsp;No Giving
-                  Up
+                  <i className="fas fa-wand-magic-sparkles"></i>&nbsp;&nbsp; Building today with tomorrow in mind
                 </div>
               </div>
               <div className="hidden lg:block absolute right-10 top-20 animate-float">
                 <div className="px-4 py-2 rounded-lg bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-400">
-                  <i className="fas fa-code"></i>&nbsp;&nbsp;God is Watching you
+                  <i className="fas fa-code"></i>&nbsp;&nbsp; Think. Build. Scale. Repeat.
                 </div>
               </div>
               <div className="hidden lg:block absolute top-[17rem] left-[70%] transform -translate-x-1/2 animate-float">
                 <div className="px-4 py-2 rounded-lg bg-amber-500/10 backdrop-blur-sm border border-amber-500/20 text-amber-400">
-                  <i className="fas fa-lightbulb"></i>&nbsp;&nbsp;Backwards Never Forward Ever.
+                  <i className="fas fa-lightbulb"></i>&nbsp;&nbsp; Engineering solutions that last beyond deployment
                 </div>
               </div>
             </div>
@@ -278,7 +277,7 @@ const profile = {
                     <div className="window-dot bg-green-500"></div>
                     <span className="ml-2 text-sm text-gray-400 flex items-center gap-2">
                       <i className="fas fa-code"></i>
-                      Programmer
+                      Full Stack Software Engineer | AI Engineer | Technical Support Engineer 
                     </span>
                   </div>
                   <pre className="language-javascript">

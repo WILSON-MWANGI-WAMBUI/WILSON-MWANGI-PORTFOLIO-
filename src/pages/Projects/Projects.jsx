@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 // Projects
 const projects = [
   {
-    title: "Wilson Mwangi Wambui Portfolio",
+    title: "Portfolio Website",
     description:
-      "Problem Solver 🚀 | Javascript Engineer 💻 | Crafting frameworks and coding the future. Personal portfolio built with React, Vite, and Tailwind CSS. Showcases skills (React, NextJS, TypeScript, Node, MongoDB) with a layered Express backend, contact form with email delivery, and smooth Lenis scrolling. Deployed on Vercel.",
+      "Software Engineer 💻 | Crafting frameworks and coding the future. Personal portfolio built with React, Vite, and Tailwind CSS. Showcases skills (React, NextJS, TypeScript, Node, MongoDB) with a layered Express backend, contact form with email delivery, and smooth Lenis scrolling. Deployed on Vercel.",
     image: "/portfolio-screenshot.png",
     // Crop tabs/chrome from top - show only the website screen
     imageFit: "cover",
@@ -24,6 +24,15 @@ const projects = [
     color: "#8f89ff",
     githubLink: "https://github.com/WILSON-MWANGI-WAMBUI/spider-wifi-billing-system-frontend",
     liveLink: "https://github.com/WILSON-MWANGI-WAMBUI/spider-wifi-billing-system-frontend",
+  },{
+    title: " E-commerce Restaurant website",
+    description: "A Modern E-commerce Website built using figma(vite framework ) postgre database with a backend payment gateway system (Daraja Mpesa payment SDK) to initiate payments"
+    image:
+    imageFit:
+    imagePosition:
+    color:
+    githubLink:
+    liveLink:
   },
 ];
 
