@@ -27,12 +27,12 @@ const projects = [
   },{
     title: " E-commerce Restaurant website",
     description: "A Modern E-commerce Website built using figma(vite framework ) postgre database with a backend payment gateway system (Daraja Mpesa payment SDK) to initiate payments"
-    image:
-    imageFit:
-    imagePosition:
-    color:
-    githubLink:
-    liveLink:
+    image: "kilfi-_fried_chicken.png"
+    imageFit: "cover",
+    imagePosition: "center 18%",
+    color: "#5196fd",
+    githubLink: "WILSON-MWANGI-PORTFOLIO-main\public\kilfi-_fried_chicken.png"
+    liveLink: https: "//narrow-anime-53869479.figma.site/",
   },
 ];
 

@@ -55,25 +55,19 @@ const ExperienceSection = () => {
   const experiences = [
     {
       icon: Network,
-      title: " Full Stack Software Engineer | AI Engineer (Freelancer)",
-      company: "freelance",
-      period: "2025-present",
+      title: "Full Stack Software Engineer | AI Engineer (Freelancer)",
+      company: "Freelance",
+      period: "2025 – Present",
       description:
-        "Build scalable full-stack apps using Node.js, Python, React, PostgreSQL
-Projects: E-commerce web and mobile applications & system (orders, dashboard, inventory), real-time video app (WebRTC, Socket.io), booking system (JWT auth)
-Focus: clean architecture, performance, and reliable APIs
-Tech: Node.js, Express, React, MongoDB, PostgreSQL, REST APIs, Git, Docker ",
+        "Build scalable full-stack apps using Node.js, Python, React, PostgreSQL. Projects: E-commerce web and mobile applications & system (orders, dashboard, inventory), real-time video app (WebRTC, Socket.io), booking system (JWT auth). Focus: clean architecture, performance, and reliable APIs. Tech: Node.js, Express, React, MongoDB, PostgreSQL, REST APIs, Git, Docker.",
     },
     {
       icon: Layers,
       title: "IT & System Support Engineer (Part-Time)",
-      company: " ",
+      company: "Self-Employed",
       period: "2022 – 2024",
       description:
-        "Provided system, network, and user support (Windows/Linux, LAN setup)
-Troubleshot hardware/software issues and managed configurations
-Solved: Reduced downtime by fixing network misconfigurations, improving system stability
-Tech: Linux, Windows, TCP/IP, DNS, Remote Tools, Diagnostics",
+        "Provided system, network, and user support (Windows/Linux, LAN setup). Troubleshot hardware/software issues and managed configurations. Solved: Reduced downtime by fixing network misconfigurations, improving system stability. Tech: Linux, Windows, TCP/IP, DNS, Remote Tools, Diagnostics.",
     },
     {
       icon: Code2,
@@ -81,10 +75,7 @@ Tech: Linux, Windows, TCP/IP, DNS, Remote Tools, Diagnostics",
       company: "Zalego Tech Co.",
       period: "2020 – 2021",
       description:
-        "Developed responsive web/mobile apps using HTML, CSS, JavaScript, PHP, MySQL
-Built and integrated frontend + backend features
-Solved: Improved page load speed by optimizing assets and reducing requests
-Tech: HTML, CSS, JavaScript,Java,Python, PHP, MySQL, Git, Android Studio (basic).",
+        "Developed responsive web/mobile apps using HTML, CSS, JavaScript, PHP, MySQL. Built and integrated frontend + backend features. Solved: Improved page load speed by optimizing assets and reducing requests. Tech: HTML, CSS, JavaScript, Java, Python, PHP, MySQL, Git, Android Studio.",
     },
   ];
 

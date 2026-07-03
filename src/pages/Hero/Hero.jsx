@@ -42,32 +42,32 @@ const GridBackground = () => {
 
 export default function Hero() {
   const words = [
-    "Programmer & Software Engineering",
-    "JavaScript Engineering ",
-    "Learning MARN Stack || Python ",
+    "|Full Stack Software Engineer | AI Engineer | Technical Support Engineer | IT Support ",
+    "Software Engineering ",
+    "Learning and Innovating Tech Stacks With Curiosity ",
     ,
   ];
 
   const [code] = useState(`
 const profile = {
     name: 'Wilson Mwangi Wambui',
-    title: 'Programmer || Software Engineering || Problem Solver',
+    title: '|Full Stack Software Engineer | AI Engineer | Technical Support Engineer |',
     skills: [
         'HTML', 'CSS', 'Bootstrap', 'JavaScript',      
-        'React', 'NextJS', 'Redux', 'Express',
-        'MySQL', 'MongoDB', 'Docker', 'Java', 'TypeScript',
-        'GraphQL', 'Git', 'Python', 'Django'
+        'React', 'NextJS', 'Redux', 'Expressjs', 'Nodejs',
+        'MySQL', 'MongoDB', 'Docker', 'kubernetes', 'Java', 'PHP' 'TypeScript',
+        'GraphQL', 'REST APIS', 'Git', 'Gitlab', 'Python', 'Django'
     ],
     hardWorker: true,
     quickLearner: true,
     problemSolver: true,
-    ProgrammingExperience: 4, 
+    ProgrammingExperience: 3, 
     hireable: function() {
         return (
             this.hardWorker &&
             this.problemSolver &&
-            this.skills.length >= 4 &&
-            this.programmingExperience >= 4
+            this.skills.length >= 3 &&
+            this.programmingExperience >= 3
         );
     }
 };
@@ -212,8 +212,7 @@ const profile = {
               {/* Description */}
               <div className="relative mb-8 sm:mb-12 max-w-xl">
                 <p className="text-base sm:text-xl text-gray-300/90 leading-relaxed">
-                   |Software Engineer | AI Engineer | Technical Support Engineer | Problem solver | Tech Enthusiast
-                  and 
+                   |Full Stack Software Engineer | AI Engineer | Technical Support Engineer | Problem solver | Tech Enthusiast 
                 </p>
               </div>
 

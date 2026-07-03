@@ -53,7 +53,7 @@ export default function About() {
                         height="20"
                         width="auto"
                       />
-                      <span className="text-white">WILSON MWANGI WAMBUI</span>
+                      <span className="text-white">WILSON MWANGI WAMBUI PORTFOLIO</span>
                     </div>
                   </div>
                 </blockquote>
