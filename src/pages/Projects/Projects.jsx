@@ -24,15 +24,16 @@ const projects = [
     color: "#8f89ff",
     githubLink: "https://github.com/WILSON-MWANGI-WAMBUI/spider-wifi-billing-system-frontend",
     liveLink: "https://github.com/WILSON-MWANGI-WAMBUI/spider-wifi-billing-system-frontend",
-  },{
+  },
+  {
     title: " E-commerce Restaurant website",
-    description: "A Modern E-commerce Website built using figma(vite framework ) postgre database with a backend payment gateway system (Daraja Mpesa payment SDK) to initiate payments"
-    image: "kilfi-_fried_chicken.png"
+    description: "A Modern E-commerce Website built using figma(vite framework ) postgre database with a backend payment gateway system (Daraja Mpesa payment SDK) to initiate payments",
+    image: "kilfi-_fried_chicken.png",
     imageFit: "cover",
     imagePosition: "center 18%",
     color: "#5196fd",
-    githubLink: "WILSON-MWANGI-PORTFOLIO-main\public\kilfi-_fried_chicken.png"
-    liveLink: https: "//narrow-anime-53869479.figma.site/",
+    githubLink: "WILSON-MWANGI-PORTFOLIO-main/public/kilfi-_fried_chicken.png",
+    liveLink: "https://narrow-anime-53869479.figma.site/",
   },
 ];
 

@@ -64,7 +64,7 @@ const ExperienceSection = () => {
     {
       icon: Layers,
       title: "IT & System Support Engineer (Part-Time)",
-      company: "Self-Employed",
+      company: "Compassion International - Kenya, Nakuru",
       period: "2022 – 2024",
       description:
         "Provided system, network, and user support (Windows/Linux, LAN setup). Troubleshot hardware/software issues and managed configurations. Solved: Reduced downtime by fixing network misconfigurations, improving system stability. Tech: Linux, Windows, TCP/IP, DNS, Remote Tools, Diagnostics.",
