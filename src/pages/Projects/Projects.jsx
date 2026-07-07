@@ -35,6 +35,16 @@ const projects = [
     githubLink: "WILSON-MWANGI-PORTFOLIO-main/public/kilfi-_fried_chicken.png",
     liveLink: "https://narrow-anime-53869479.figma.site/",
   },
+  {
+    title: " E-commerce Restaurant website",
+    description: "A Modern E-commerce Website built using figma(vite framework ) postgre database with a backend payment gateway system (Daraja Mpesa payment SDK) to initiate payments",
+    image: "kilfi-fried-chicken.png",
+    imageFit: "cover",
+    imagePosition: "center 18%",
+    color: "#51fd7fff",
+    githubLink: "WILSON-MWANGI-PORTFOLIO-main/public/kilfi-fried-chicken.png",
+    liveLink: "http://172.22.160.1:8081/",
+  },
 ];
 
 export default function Projects() {
