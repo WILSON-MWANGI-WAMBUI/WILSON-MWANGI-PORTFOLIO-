@@ -20,10 +20,10 @@ const projects = [
     title: "WiFi Billing System - Frontend",
     description:
       "A frontend project for a WiFi billing system built with React, Tailwind CSS, and JavaScript.",
-    image: "https://placehold.co/800x600/1e293b/64748b?text=Coming+Soon",
+    image: "spider wifi billig system.png",
     color: "#8f89ff",
     githubLink: "https://github.com/WILSON-MWANGI-WAMBUI/spider-wifi-billing-system-frontend",
-    liveLink: "https://github.com/WILSON-MWANGI-WAMBUI/spider-wifi-billing-system-frontend",
+    liveLink: "http://localhost:8080",
   },
   {
     title: " E-commerce Restaurant website",
@@ -32,7 +32,7 @@ const projects = [
     imageFit: "cover",
     imagePosition: "center 18%",
     color: "#5196fd",
-    githubLink: "WILSON-MWANGI-PORTFOLIO-main/public/kilfi-_fried_chicken.png",
+    githubLink: "https://github.com/WILSON-MWANGI-WAMBUI/kilfi-_fried_chicken",
     liveLink: "https://narrow-anime-53869479.figma.site/",
   },
   {
@@ -44,6 +44,25 @@ const projects = [
     color: "#51fd7fff",
     githubLink: "WILSON-MWANGI-PORTFOLIO-main/public/kilfi-fried-chicken.png",
     liveLink: "http://172.22.160.1:8081/",
+  },
+  {
+    title: " E-commerce cloting store website",
+    description: "A Modern E-commerce Website built using vite framework , React , html , Tailwingcsspostgre database with a backend payment gateway system (Daraja Mpesa payment SDK) to initiate payments",
+    image: "flair frame engine.png",
+    imageFit: "cover",
+    imagePosition: "center 18%",
+    color: "#c436ecff",
+    githubLink: "WILSON-MWANGI-PORTFOLIO-main/public/kilfi-fried-chicken.png",
+    liveLink: "https://asus-ext-biotechnology-powerful.trycloudflare.com/",
+  }, {
+    title: "Modewrn booking system",
+    description: "This is a full-stack booking software for a restaurant, built in NextJS, tRPC, Prisma, and TailwindCSS.",
+    image: "modern booking system",
+    imageFit: "cover",
+    imagePosition: "center 18%",
+    color: ""#4b17e6ff",
+    githubLink: "WILSON-MWANGI-PORTFOLIO-main/public/modern-booking system",
+    liveLink: "Available soon",
   },
 ];
 
